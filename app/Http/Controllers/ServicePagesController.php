@@ -71,7 +71,8 @@ class ServicePagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        return view('pages.services.edit', compact('service'));
     }
 
     /**
@@ -83,7 +84,20 @@ class ServicePagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'icon' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string', 
+        ]);
+
+        $services = Service::find($id);
+        $services->icon = $request->icon;
+        $services->title = $request->title;
+        $services->description = $request->description;
+
+        $services->save();
+
+        return redirect()->route('admin.services.list')->with('success','Service Updated Successfully');
     }
 
     /**
@@ -94,6 +108,9 @@ class ServicePagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::find($id);
+        $service->delete();
+
+        return redirect()->route('admin.services.list')->with('success','Service Deleted Successfully');
     }
 }
