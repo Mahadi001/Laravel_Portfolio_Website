@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+Route::get('/', 'PagesController@index')->name('home');
 
 Route::prefix('admin')->group(function(){
-    Route::get('/', 'PagesController@index')->name('home');
     Route::get('/dashboard', 'PagesController@dashboard')->name('admin.dashboard');
     Route::get('/main', 'MainPagesController@index')->name('admin.main');
     Route::put('/main', 'MainPagesController@update')->name('admin.main.update');
