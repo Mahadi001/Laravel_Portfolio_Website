@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Main;
 use App\Service;
 use App\Portfolio;
+use App\About;
 
 class PagesController extends Controller
 {
@@ -13,7 +14,8 @@ class PagesController extends Controller
         $main = Main::first();
         $services = Service::all();
         $portfolios = Portfolio::all();
-        return view('pages.index', compact('main','services','portfolios'));
+        $abouts = About::all();
+        return view('pages.index', compact('main','services','portfolios','abouts'));
     }
 
     public function dashboard(){
