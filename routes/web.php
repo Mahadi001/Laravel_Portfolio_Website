@@ -43,6 +43,8 @@ Route::prefix('admin')->group(function(){
     Route::delete('/abouts/destroy/{id}', 'AboutPagesController@destroy')->name('admin.abouts.destroy');
 });
 
+Route::post('/contact','ContactFormController@store')->name('contact.store');
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
