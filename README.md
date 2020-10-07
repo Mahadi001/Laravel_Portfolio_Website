@@ -63,6 +63,10 @@ npm run watch
 ```
 
 
+## For Contact Form
+
+Change the information on the .env page. Place your own information according to the respective field, "MAIL_USERNAME" and MAIL_PASSWORD and also move to the ContactFormController file to change the field inside the to() function with your own designated mail address. 
+
 
 ## Contributing
 
