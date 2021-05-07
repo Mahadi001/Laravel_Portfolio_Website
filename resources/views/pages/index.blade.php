@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Learning Norms</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -14,13 +14,13 @@
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+        <link href="{{secure_asset('css/styles.css')}}" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="" /></a>
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/logo.png" alt="" /></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ml-1"></i>
@@ -36,11 +36,11 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead" style="background-image: url(<?php echo $main->bc_img ?>)">
+        <header class="masthead" style="background-image: url(<?php echo (@$main->bc_img)?url($main->bc_img):asset("assets/img/bc_img.jpg") ?>)">
             <div class="container">
-                <div class="masthead-subheading">{{$main->sub_title}}</div>
-                <div class="masthead-heading text-uppercase">{{$main->title}}</div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{url($main->resume)}}">Resume</a>
+                <div class="masthead-subheading">{{(@$main->subtitle)?$main->sub_title:"Sub Title"}}</div>
+                <div class="masthead-heading text-uppercase">{{(@$main->title)?$main->title:"The title"}}</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{(@$main->resume)?url($main->resume):"#"}}">Resume</a>
             </div>
         </header>
         <!-- Services-->
@@ -117,6 +117,17 @@
                             </li>
                         @endforeach
                     @endif
+                    <li>
+                        <div class="timeline-image">
+                            <h4>
+                                Learning
+                                <br />
+                                Norms
+                                <br />
+                                Story!
+                            </h4>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -181,7 +192,7 @@
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-left">Copyright © Your Website 2020</div>
+                    <div class="col-lg-4 text-lg-left">Copyright © Learning Norms 2021</div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
@@ -196,6 +207,8 @@
         </footer>
         <!-- Portfolio Modals-->
         <!-- Modal 1-->
+        @if (count($portfolios) > 0)
+        @foreach ($portfolios as $porfolio)
         <div class="portfolio-modal modal fade" id="portfolioModal<?php echo $portfolio->id?>" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -225,6 +238,8 @@
                 </div>
             </div>
         </div>
+        @endforeach
+        @endif
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
@@ -233,6 +248,6 @@
         <!-- Contact form JS-->
         <script src="assets/mail/jqBootstrapValidation.js"></script>
         <!-- Core theme JS-->
-        <script src="{{asset('js/scripts.js')}}"></script>
+        <script src="{{secure_asset('js/scripts.js')}}"></script>
     </body>
 </html>

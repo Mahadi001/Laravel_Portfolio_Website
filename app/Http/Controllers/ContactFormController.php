@@ -8,6 +8,16 @@ use App\Mail\ContactFormMail;
 
 class ContactFormController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store()
     {
         $contact_form_data = request()->all();

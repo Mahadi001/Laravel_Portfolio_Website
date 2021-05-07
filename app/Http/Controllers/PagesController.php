@@ -18,9 +18,4 @@ class PagesController extends Controller
         return view('pages.index', compact('main','services','portfolios','abouts'));
     }
 
-    public function dashboard(){
-        return view('pages.dashboard');
-    }
-
-
 }

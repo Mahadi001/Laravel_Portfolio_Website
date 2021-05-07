@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PagesController@index')->name('home');
 
 Route::prefix('admin')->group(function(){
-    Route::get('/dashboard', 'PagesController@dashboard')->name('admin.dashboard');
+    Route::get('/dashboard', 'MainPagesController@dashboard')->name('admin.dashboard');
     Route::get('/main', 'MainPagesController@index')->name('admin.main');
     Route::put('/main', 'MainPagesController@update')->name('admin.main.update');
     Route::get('/services/create', 'ServicePagesController@create')->name('admin.services.create');
